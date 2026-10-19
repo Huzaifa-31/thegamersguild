@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -72,13 +73,21 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 mt-16 flex flex-col items-center gap-3 text-sm text-slate-400">
-        <a
-          href="mailto:support@thegamersguild.pro"
-          className="rounded-full border border-white/10 px-5 py-2 font-medium text-slate-200 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
-        >
-          Contact us
-        </a>
+      <footer className="relative z-10 mt-16 flex flex-col items-center gap-4 text-sm text-slate-400">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          {/* <a
+            href="mailto:support@thegamersguild.pro"
+            className="rounded-full border border-white/10 px-5 py-2 font-medium text-slate-200 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
+          >
+            Contact us
+          </a> */}
+          <Link
+            href="/privacy-policy"
+            className="rounded-full border border-white/10 px-5 py-2 font-medium text-slate-200 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
+          >
+            Privacy Policy
+          </Link>
+        </div>
         <p>&copy; 2026 The Gamers Guild. All rights reserved.</p>
       </footer>
     </main>
