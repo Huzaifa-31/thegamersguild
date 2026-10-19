@@ -74,7 +74,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 mt-16 flex flex-col items-center gap-3 text-sm text-slate-400">
         <a
-          href="mailto:support@thegamersguild.com"
+          href="mailto:support@thegamersguild.pro"
           className="rounded-full border border-white/10 px-5 py-2 font-medium text-slate-200 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
         >
           Contact us
