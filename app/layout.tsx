@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Gamers Guild — Under Maintenance",
+  title: "The Gamers Guild",
   description:
-    "The Gamers Guild is currently down for maintenance. We'll be right back — level up soon.",
+    "The Gamers Guild — leading game development house creating world-class 2D and 3D games for Android and iOS.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

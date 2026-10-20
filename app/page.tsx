@@ -1,95 +1,148 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata: Metadata = {
+  title: "Privacy Policy | The Gamers Guild",
+  description:
+    "Privacy Policy for The Gamers Guild game development.",
+};
+
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 py-16 font-sans">
-      {/* Background glows */}
+    <main className="relative min-h-screen w-full overflow-hidden font-sans">
+      {/* Background ambient glows */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-32 left-1/2 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-brand-orange/20 blur-[120px] animate-glow"
+        className="pointer-events-none absolute -top-32 right-1/4 h-[32rem] w-[32rem] rounded-full bg-brand-orange/15 blur-[130px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-brand-navy-soft/40 blur-[120px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-24 top-1/3 h-[24rem] w-[24rem] rounded-full bg-brand-orange/10 blur-[110px]"
-      />
-      {/* Subtle grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage:
-            "radial-gradient(ellipse 70% 60% at 50% 45%, #000 55%, transparent 100%)",
-        }}
+        className="pointer-events-none absolute top-1/2 -left-36 h-[32rem] w-[32rem] rounded-full bg-brand-navy-soft/50 blur-[130px]"
       />
 
-      <div className="relative z-10 flex w-full max-w-xl flex-col items-center text-center">
-        {/* Logo card */}
-        <div className="animate-float rounded-3xl bg-white p-4 shadow-2xl shadow-black/40 ring-1 ring-white/10">
-          <Image
-            src="/logo.jpeg"
-            alt="The Gamers Guild logo"
-            width={128}
-            height={128}
-            priority
-            className="h-28 w-28 rounded-2xl object-contain sm:h-32 sm:w-32"
-          />
-        </div>
-
-        {/* Status badge */}
-        <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-4 py-1.5 text-sm font-medium text-brand-orange">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-orange opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-orange" />
-          </span>
-          Under Maintenance
-        </div>
-
-        <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          The Gamers Guild
-        </h1>
-        <p className="mt-4 max-w-md text-base leading-7 text-slate-300 sm:text-lg">
-          We&apos;re leveling up the site and making things even better.
-          We&apos;ll be right back — grab a snack, stretch those thumbs, and
-          we&apos;ll see you soon.
-        </p>
-
-        {/* Progress bar */}
-        <div className="mt-10 w-full max-w-sm">
-          <div className="h-2 w-full overflow-hidden rounded-full bg-white/10">
-            <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-brand-navy-soft to-brand-orange" />
-          </div>
-          <p className="mt-3 text-xs uppercase tracking-[0.2em] text-slate-400">
-            Recharging&hellip; back shortly
-          </p>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="relative z-10 mt-16 flex flex-col items-center gap-4 text-sm text-slate-400">
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          {/* <a
-            href="mailto:support@thegamersguild.pro"
-            className="rounded-full border border-white/10 px-5 py-2 font-medium text-slate-200 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
-          >
-            Contact us
-          </a> */}
+      <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-16">
+        {/* Header / Brand */}
+        <div className="flex items-center justify-between">
           <Link
-            href="/privacy-policy"
-            className="rounded-full border border-white/10 px-5 py-2 font-medium text-slate-200 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
+            href="/"
+            className="inline-flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-lg shadow-black/40 ring-1 ring-white/10 transition-transform hover:scale-[1.02]"
           >
-            Privacy Policy
+            <Image
+              src="/logo.jpeg"
+              alt="The Gamers Guild logo"
+              width={48}
+              height={48}
+              className="h-10 w-10 rounded-xl object-contain"
+            />
+            <span className="text-sm font-bold text-brand-navy">
+              The Gamers Guild
+            </span>
+          </Link>
+
+          <Link
+            href="/contact"
+            className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
+          >
+            Contact Us
           </Link>
         </div>
-        <p>&copy; 2026 The Gamers Guild. All rights reserved.</p>
-      </footer>
+
+        <header className="mt-10">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Privacy Policy
+          </h1>
+        </header>
+
+        {/* Content */}
+        <div className="mt-8 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md sm:p-10">
+          <p className="text-base leading-relaxed text-slate-200 sm:text-lg">
+            The Gamers Guild is one of the leading game development house in the
+            country. The organization believes in original content creation
+            thriving on work-hard-play-hard culture.
+          </p>
+
+          <div className="space-y-6 border-y border-white/10 py-6">
+            <div>
+              <h2 className="text-lg font-bold text-brand-orange">
+                Perfection
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                Since Android is one of the most widely used platforms, Android
+                games need to be designed to work well in various screen sizes
+                and OS.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-lg font-bold text-brand-orange">
+                Proficiency
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                Our team includes the best developers of the industry who are
+                constantly adapting themselves to the latest trends.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-lg font-bold text-brand-orange">
+                Completion
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-300">
+                We provide full-scale development services for gaming apps on
+                Android and Ios.
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h2 className="text-lg font-bold text-white">
+              We are passionate about what we do.
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              We firmly believe in the survival of the fittest in this
+              challenging industry. Perfection can only be delivered by giving
+              one hundred percent to a job. We are a team of committed
+              professionals in love with our work.
+            </p>
+            <p className="text-sm font-medium text-slate-200">
+              Doing what we love makes the journey towards success our reward.
+            </p>
+          </div>
+
+          <div className="space-y-3 border-t border-white/10 pt-6">
+            <h2 className="text-lg font-bold text-white">A growing company.</h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              Gamers Guild is one of the leading game development houses in the
+              country. We take pride in developing world class 2D and 3D games,
+              mostly ranked among top games globally.
+            </p>
+          </div>
+
+          <div className="border-t border-white/10 pt-6">
+            <h2 className="text-lg font-bold text-white">
+              Best User Experience Games
+            </h2>
+            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-slate-300">
+              <li>2D Games</li>
+              <li>3D Games</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-slate-400 sm:flex sm:items-center sm:justify-between sm:text-left">
+          <p>&copy; 2026 The Gamers Guild. All rights reserved.</p>
+          <div className="mt-3 flex items-center justify-center gap-4 sm:mt-0 sm:justify-end">
+            <Link
+              href="/contact"
+              className="font-medium text-slate-200 transition-colors hover:text-brand-orange"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }
