@@ -1,11 +1,47 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | The Gamers Guild",
+  title: "Privacy Policy",
   description:
-    "Privacy Policy for The Gamers Guild game development.",
+    "Privacy Policy and studio overview for The Gamers Guild — leading game development house creating world-class 2D and 3D games for Android and iOS.",
+  keywords: [
+    "The Gamers Guild privacy policy",
+    "mobile game privacy policy",
+    "game development studio",
+    "Android games",
+    "iOS games",
+    "2D games",
+    "3D games",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Privacy Policy | The Gamers Guild",
+    description:
+      "Privacy Policy and studio overview for The Gamers Guild — leading game development house creating world-class 2D and 3D games.",
+    url: "/",
+    siteName: "The Gamers Guild",
+    type: "website",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 1024,
+        height: 1024,
+        alt: "The Gamers Guild Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | The Gamers Guild",
+    description:
+      "Privacy Policy and studio overview for The Gamers Guild game development.",
+    images: ["/logo.jpeg"],
+  },
 };
 
 export default function Home() {
@@ -23,10 +59,11 @@ export default function Home() {
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-16">
         {/* Header / Brand */}
-        <div className="flex items-center justify-between">
+        <header className="flex items-center justify-between">
           <Link
             href="/"
             className="inline-flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-lg shadow-black/40 ring-1 ring-white/10 transition-transform hover:scale-[1.02]"
+            aria-label="The Gamers Guild Home"
           >
             <Image
               src="/logo.jpeg"
@@ -34,28 +71,32 @@ export default function Home() {
               width={48}
               height={48}
               className="h-10 w-10 rounded-xl object-contain"
+              priority
             />
             <span className="text-sm font-bold text-brand-navy">
               The Gamers Guild
             </span>
           </Link>
 
-          <Link
-            href="/contact"
-            className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
-          >
-            Contact Us
-          </Link>
-        </div>
+          <nav aria-label="Main Navigation" className="flex items-center gap-2">
+            <Link
+              href="/contact"
+              className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
+            >
+              Contact Us
+            </Link>
+          </nav>
+        </header>
 
-        <header className="mt-10">
+        {/* Page Title Section */}
+        <section className="mt-10">
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Privacy Policy
           </h1>
-        </header>
+        </section>
 
         {/* Content */}
-        <div className="mt-8 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md sm:p-10">
+        <article className="mt-8 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md sm:p-10">
           <p className="text-base leading-relaxed text-slate-200 sm:text-lg">
             The Gamers Guild is one of the leading game development house in the
             country. The organization believes in original content creation
@@ -128,20 +169,10 @@ export default function Home() {
               <li>3D Games</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        {/* Footer */}
-        <footer className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-slate-400 sm:flex sm:items-center sm:justify-between sm:text-left">
-          <p>&copy; 2026 The Gamers Guild. All rights reserved.</p>
-          <div className="mt-3 flex items-center justify-center gap-4 sm:mt-0 sm:justify-end">
-            <Link
-              href="/contact"
-              className="font-medium text-slate-200 transition-colors hover:text-brand-orange"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </footer>
+        {/* Shared Footer with DigiDittos credit */}
+        <Footer />
       </div>
     </main>
   );

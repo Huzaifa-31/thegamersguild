@@ -1,16 +1,72 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Contact Us | The Gamers Guild",
+  title: "Contact Us",
   description:
-    "Let’s keep in touch! Reach out to The Gamers Guild at info@thegamersguild.pro — we respond within 24 hrs.",
+    "Let’s keep in touch! Reach out to The Gamers Guild at info@thegamersguild.pro for game development inquiries, partnerships, or feedback. We respond within 24 hrs.",
+  keywords: [
+    "Contact The Gamers Guild",
+    "game development inquiry",
+    "game studio contact",
+    "mobile games support",
+    "The Gamers Guild email",
+    "game developer partnerships",
+  ],
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us | The Gamers Guild",
+    description:
+      "Have questions about our games, feedback, or inquiries? Contact The Gamers Guild at info@thegamersguild.pro.",
+    url: "/contact",
+    siteName: "The Gamers Guild",
+    type: "website",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 1024,
+        height: 1024,
+        alt: "The Gamers Guild Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us | The Gamers Guild",
+    description:
+      "Reach out to The Gamers Guild at info@thegamersguild.pro — we respond within 24 hrs.",
+    images: ["/logo.jpeg"],
+  },
+};
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Us | The Gamers Guild",
+  description:
+    "Have questions about our games, feedback, or inquiries? Reach out to The Gamers Guild at info@thegamersguild.pro.",
+  url: "https://thegamersguild.pro/contact",
+  mainEntity: {
+    "@type": "Organization",
+    name: "The Gamers Guild",
+    email: "info@thegamersguild.pro",
+    url: "https://thegamersguild.pro",
+  },
 };
 
 export default function ContactPage() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden font-sans">
+      {/* Page specific JSON-LD schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
+
       {/* Background ambient glows */}
       <div
         aria-hidden
@@ -23,10 +79,11 @@ export default function ContactPage() {
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-16">
         {/* Header / Brand */}
-        <div className="flex items-center justify-between">
+        <header className="flex items-center justify-between">
           <Link
             href="/"
             className="inline-flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-lg shadow-black/40 ring-1 ring-white/10 transition-transform hover:scale-[1.02]"
+            aria-label="The Gamers Guild Home"
           >
             <Image
               src="/logo.jpeg"
@@ -34,25 +91,28 @@ export default function ContactPage() {
               width={48}
               height={48}
               className="h-10 w-10 rounded-xl object-contain"
+              priority
             />
             <span className="text-sm font-bold text-brand-navy">
               The Gamers Guild
             </span>
           </Link>
 
-          <Link
-            href="/"
-            className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
-          >
-            Privacy Policy
-          </Link>
-        </div>
+          <nav aria-label="Main Navigation" className="flex items-center gap-3">
+            <Link
+              href="/privacy-policy"
+              className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
+            >
+              Privacy Policy
+            </Link>
+          </nav>
+        </header>
 
-        {/* Header section */}
-        <header className="mt-12 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand-orange">
+        {/* Header section with proper single H1 */}
+        <section className="mt-12 text-center sm:text-left">
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand-orange/30 bg-brand-orange/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand-orange">
             Get In Touch
-          </div>
+          </span>
           <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
             Let&apos;s keep in touch!
           </h1>
@@ -60,10 +120,13 @@ export default function ContactPage() {
             Have questions about our games, feedback, or inquiries? We would love
             to hear from you.
           </p>
-        </header>
+        </section>
 
-        {/* Contact Card */}
-        <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 shadow-2xl backdrop-blur-md sm:p-10">
+        {/* Contact Card with H2 heading */}
+        <section
+          aria-labelledby="contact-heading"
+          className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 shadow-2xl backdrop-blur-md sm:p-10"
+        >
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-4">
               <div className="rounded-2xl bg-brand-orange/10 p-3.5 ring-1 ring-brand-orange/20">
@@ -84,9 +147,12 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                <h2
+                  id="contact-heading"
+                  className="text-xs font-semibold uppercase tracking-wider text-slate-400"
+                >
                   Email Us Directly
-                </span>
+                </h2>
                 <a
                   href="mailto:info@thegamersguild.pro"
                   className="mt-1 block text-xl font-bold text-white transition-colors hover:text-brand-orange sm:text-2xl"
@@ -138,20 +204,10 @@ export default function ContactPage() {
               We will respond within 24 hrs.
             </p>
           </div>
-        </div>
+        </section>
 
-        {/* Footer */}
-        <footer className="mt-16 border-t border-white/10 pt-6 text-center text-sm text-slate-400 sm:flex sm:items-center sm:justify-between sm:text-left">
-          <p>&copy; 2026 The Gamers Guild. All rights reserved.</p>
-          <div className="mt-2 flex items-center justify-center gap-4 sm:mt-0 sm:justify-end">
-            <Link
-              href="/"
-              className="font-medium text-slate-200 transition-colors hover:text-brand-orange"
-            >
-              Privacy Policy
-            </Link>
-          </div>
-        </footer>
+        {/* Shared Footer with DigiDittos credit */}
+        <Footer />
       </div>
     </main>
   );

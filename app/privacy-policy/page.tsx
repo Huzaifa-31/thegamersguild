@@ -1,11 +1,45 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | The Gamers Guild",
+  title: "Privacy Policy",
   description:
-    "Privacy Policy — The Gamers Guild game development.",
+    "Official Privacy Policy for The Gamers Guild game development studio — protecting player privacy and detailing our data practices.",
+  keywords: [
+    "Privacy Policy",
+    "The Gamers Guild privacy policy",
+    "mobile game privacy policy",
+    "game data protection",
+    "player privacy",
+  ],
+  alternates: {
+    canonical: "/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | The Gamers Guild",
+    description:
+      "Official Privacy Policy for The Gamers Guild game development studio.",
+    url: "/privacy-policy",
+    siteName: "The Gamers Guild",
+    type: "website",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 1024,
+        height: 1024,
+        alt: "The Gamers Guild Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | The Gamers Guild",
+    description:
+      "Official Privacy Policy for The Gamers Guild game development studio.",
+    images: ["/logo.jpeg"],
+  },
 };
 
 export default function PrivacyPolicy() {
@@ -23,10 +57,11 @@ export default function PrivacyPolicy() {
 
       <div className="relative z-10 mx-auto w-full max-w-3xl px-6 py-16">
         {/* Header / Brand */}
-        <div className="flex items-center justify-between">
+        <header className="flex items-center justify-between">
           <Link
             href="/"
             className="inline-flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-lg shadow-black/40 ring-1 ring-white/10 transition-transform hover:scale-[1.02]"
+            aria-label="The Gamers Guild Home"
           >
             <Image
               src="/logo.jpeg"
@@ -34,30 +69,32 @@ export default function PrivacyPolicy() {
               width={48}
               height={48}
               className="h-10 w-10 rounded-xl object-contain"
+              priority
             />
             <span className="text-sm font-bold text-brand-navy">
               The Gamers Guild
             </span>
           </Link>
 
-          <div className="flex items-center gap-3">
+          <nav aria-label="Main Navigation" className="flex items-center gap-3">
             <Link
               href="/contact"
               className="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-brand-orange/40 hover:text-brand-orange"
             >
               Contact Us
             </Link>
-          </div>
-        </div>
+          </nav>
+        </header>
 
-        <header className="mt-10">
+        {/* Page Title Section */}
+        <section className="mt-10">
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Privacy Policy
           </h1>
-        </header>
+        </section>
 
         {/* Content */}
-        <div className="mt-8 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md sm:p-10">
+        <article className="mt-8 space-y-8 rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md sm:p-10">
           <p className="text-base leading-relaxed text-slate-200 sm:text-lg">
             The Gamers Guild is one of the leading game development house in the
             country. The organization believes in original content creation
@@ -130,26 +167,10 @@ export default function PrivacyPolicy() {
               <li>3D Games</li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        {/* Footer */}
-        <footer className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-slate-400 sm:flex sm:items-center sm:justify-between sm:text-left">
-          <p>&copy; 2026 The Gamers Guild. All rights reserved.</p>
-          <div className="mt-2 flex items-center justify-center gap-4 sm:mt-0 sm:justify-end">
-            <Link
-              href="/"
-              className="font-medium text-slate-200 transition-colors hover:text-brand-orange"
-            >
-              Home
-            </Link>
-            <Link
-              href="/contact"
-              className="font-medium text-slate-200 transition-colors hover:text-brand-orange"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </footer>
+        {/* Shared Footer with DigiDittos credit */}
+        <Footer />
       </div>
     </main>
   );
